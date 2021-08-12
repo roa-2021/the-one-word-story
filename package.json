@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/roa-2021/the-one-word-story#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3"
   },
   "devDependencies": {
     "jest": "^27.0.6",

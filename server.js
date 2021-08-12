@@ -3,11 +3,20 @@ const fs = require('fs')
 const server = express()
 const hbs = require('express-handlebars')
 
-//Routes//
+// Server configuration
+server.use(express.static('public'))
+server.use(express.urlencoded({ extended: false }))
+
+// Handlebars configuration
+server.engine('hbs', hbs({ extname: 'hbs' }))
+server.set('view engine', 'hbs')
+
+
+///////////////////////// Routes///////////////////////
 
 //home route
 server.get('/', (request, response) => {
-  response.sendFile(__dirname + '/index.html')
+  response.render('landingview')
   
 
  })
