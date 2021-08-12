@@ -6,6 +6,6 @@ It's simples!!
 3. Sit back and take in the beauty of The One Word Story
 
 The One Word Story is brought to you by Team 3dom:
-[Zoe](https://github.com/zoe-joblin) :joy:, [Kang](https://github.com/gawk2333) :grin:, [Patrick](https://github.com/patrick-j-sulley) and [Jordan](https://github.com/Jordy1311) :pinched_fingers:
+[Zoe](https://github.com/zoe-joblin) :joy:, [Kang](https://github.com/gawk2333) :hugs:, [Patrick](https://github.com/patrick-j-sulley) :muscle::sunglasses::selfie: and [Jordan](https://github.com/Jordy1311) :pinched_fingers:
 
 
