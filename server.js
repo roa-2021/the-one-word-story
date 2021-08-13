@@ -35,7 +35,7 @@ server.get('/story', (request, response) => {
 server.post('/', (request, response) => {
 
   const input = request.body.story
-
+  
   if (wordFilter.checkTypeOf(input) != 'string')
   {
     alert('Not a string! You sneaky devil.')
@@ -58,15 +58,18 @@ server.post('/', (request, response) => {
     return;
   }
   
-
-  fs.readFile('./story.json', 'utf-8', (err, data) => {
-     if (err) return response.status(500).send(err.message)
+  fs.readFile('/story.json', 'utf-8', (err, data) => {
+     if (err) return err.message
      
-    // const parsedData = JSON.parse(data)
-   const newWord = JSON.stringify(input, null, 2)
+    const parsedData = JSON.parse(data)
 
-    fs.appendFile('./story.json', newWord, 'utf-8', (err) => {
-      if (err) return response.status(500).send(err.message)
+   const newArray = parsedData.story.push(input)
+
+   const newStory = JSON.stringify({newArray}, null, 2)
+
+   fs.writeFile('/story.json', newStory, 'utf-8', (err, data) => {
+      if (err) return err.message
+     
         response.redirect('/story')
   
     })
@@ -75,11 +78,11 @@ server.post('/', (request, response) => {
 
 
 
-// //about us route
-// server.get('/about-us', (request, response) => {
-//   response.sendFile(__dirname + 'aboutus.html')
+//about us route
+server.get('/about-us', (request, response) => {
+  response.sendFile(__dirname + 'aboutus.html')
  
-// })
+})
 
 
 
