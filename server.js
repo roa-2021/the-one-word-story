@@ -30,28 +30,28 @@ server.get('/story', (request, response) => {
 })
 
 //post route (takes input from home page and displays on story page)
-// server.post('/', (request, response) => {
-//   const newWord = request.body 
+server.post('/', (request, response) => {
+  const newWord = request.body 
  
-//   //reading story file
-//   fs.readFile('/story.json', 'utf-8', (err, data) => {
-//      if (err) return res.status(500).send(err.message)
+  //reading story file
+  fs.readFile('/story.json', 'utf-8', (err, data) => {
+     if (err) return res.status(500).send(err.message)
 
-//   const parsedData = JSON.parse(data)
+  const parsedData = JSON.parse(data)
 
-//   // filter word functions
+  // filter word functions
      
  
-//   const newFileContents = JSON.stringify({ result of parsedData once manipulated }, null, 2)
+  const newFileContents = JSON.stringify({ }, null, 2)
 
-//   //add new word to story file
-//       fs.writeFile('./data.json', newFileContents, 'utf-8', (err, data) => {
-//       if (err) return res.status(500).send(err.message)
+  //add new word to story file
+      fs.writeFile('./data.json', newFileContents, 'utf-8', (err, data) => {
+      if (err) return res.status(500).send(err.message)
 
-//       //display updated story
-//      response.redirect('/story')
-//    })
-//  })
+      //display updated story
+     response.redirect('/story')
+   })
+ })
 
 
 //about us route
