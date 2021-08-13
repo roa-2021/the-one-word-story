@@ -6,6 +6,7 @@ const alert = require('alert')
 
 const wordFilter = require('./word')
 const { checkIfProfane } = require('./word')
+const { json } = require('express')
 
 // Server configuration
 server.use(express.static('public'))
@@ -58,17 +59,18 @@ server.post('/', (request, response) => {
     return;
   }
   
-  fs.readFile('/story.json', 'utf-8', (err, data) => {
-     if (err) return err.message
+  fs.readFile('./story.json', 'utf-8', (err, data) => {
+    if (err) return response.status(500).send(err.message)
      
     const parsedData = JSON.parse(data)
 
+    
    const newArray = parsedData.story.push(input)
+    
+   const newStory = JSON.stringify({story:newArray}, null, 2)
 
-   const newStory = JSON.stringify({newArray}, null, 2)
-
-   fs.writeFile('/story.json', newStory, 'utf-8', (err, data) => {
-      if (err) return err.message
+   fs.writeFile('./story.json', newStory, 'utf-8', (err, data) => {
+    if (err) return response.status(500).send(err.message)
      
         response.redirect('/story')
   
