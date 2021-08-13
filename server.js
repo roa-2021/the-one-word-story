@@ -29,14 +29,17 @@ server.get('/story', (request, response) => {
 
 // /////////*********//post route/////************** */ (takes input from home page and displays on story page)
 server.post('/', (request, response) => {
-  const input = request.body 
+  const input = request.body.story
   fs.readFile('/story.json', 'utf-8', (err, data) => {
      if (err) return err.message
      
-    // const parsedData = JSON.parse(data)
-   // const newWord = JSON.stringify({ }, null, 2)
+    const parsedData = JSON.parse(data)
 
-    fs.append('/story.json', input, 'utf-8', (err) => {
+   const newArray = parsedData.story.push(input)
+
+   const newStory = JSON.stringify({newArray}, null, 2)
+
+   fs.writeFile('/story.json', newStory, 'utf-8', (err, data) => {
       if (err) return err.message
         response.redirect('/story')
   
@@ -46,11 +49,11 @@ server.post('/', (request, response) => {
 
 
 
-// //about us route
-// server.get('/about-us', (request, response) => {
-//   response.sendFile(__dirname + 'aboutus.html')
+//about us route
+server.get('/about-us', (request, response) => {
+  response.sendFile(__dirname + 'aboutus.html')
  
-// })
+})
 
 
 
