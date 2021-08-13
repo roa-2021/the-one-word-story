@@ -33,5 +33,6 @@ const checkIfTooLong = (input) => {
 module.exports = {
     checkTypeOf: checkTypeOf,
     checkIfWord: checkIfWord,
-    checkIfProfane: checkIfProfane
+    checkIfProfane: checkIfProfane,
+    checkIfTooLong: checkIfTooLong
 }
