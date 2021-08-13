@@ -19,8 +19,10 @@
   },
   "homepage": "https://github.com/roa-2021/the-one-word-story#readme",
   "dependencies": {
+    "check-word": "^1.1.0",
     "express": "^4.17.1",
-    "express-handlebars": "^5.3.3"
+    "express-handlebars": "^5.3.3",
+    "profanity-js": "^0.1.4"
   },
   "devDependencies": {
     "jest": "^27.0.6",
