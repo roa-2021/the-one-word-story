@@ -2,7 +2,7 @@ const checkWord = require('check-word')
 const Profanity = require('profanity-js')
 const words = checkWord('en')
 
-const profanity = new Profanity({test: 'fuck'}, {language: 'en-us'});
+const profanity = new Profanity({test: ''}, {language: 'en-us'});
 
 
 const checkTypeOf = (input) => {
@@ -16,13 +16,14 @@ const checkIfWord = (input) => {
 
 const checkIfProfane = (input) => {
 
-    return profanity.isProfrane(input)
+    return profanity.isProfane(input)
 
 }
 
+
 console.log(checkTypeOf(1))
-console.log(checkIfWord('hsfd'))
-console.log('s#1t')
+console.log(checkIfWord('test'))
+console.log(checkIfProfane('s#1t'))
 
 module.exports = {
     checkTypeOf: checkTypeOf,

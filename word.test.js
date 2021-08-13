@@ -17,34 +17,34 @@
 
 // })
 
-// test('Check if input contains a number' , () => {
+// // test('Check if input contains a number' , () => {
 
-//     const input = '100'
+// //     const input = '100'
 
-//     const actual = word.checkIfNum(input)
+// //     const actual = word.checkIfNum(input)
 
-//     const expected = true;
+// //     const expected = true;
 
-//     expect(actual).toBe(expected)
-
-    
-
-// })
-
-// test('Check if input contains any non alphanumeric characters', () => {
-
-//     const alphaInput = "swag"
-//     const nonAlphaInput = "$wag"
-
-//     const actual = word.checkIfAlpha(alphaInput)
-
-//     const expected = true;
-
-//     expect(actual).toBe(expected)
+// //     expect(actual).toBe(expected)
 
     
 
-// })
+// // })
+
+// // test('Check if input contains any non alphanumeric characters', () => {
+
+// //     const alphaInput = "swag"
+// //     const nonAlphaInput = "$wag"
+
+// //     const actual = word.checkIfAlpha(alphaInput)
+
+// //     const expected = true;
+
+// //     expect(actual).toBe(expected)
+
+    
+
+// // })
 
 // // test.todo('Check if input matches any explicit words')
 
