@@ -30,11 +30,6 @@ const checkIfTooLong = (input) => {
 
 }
 
-// console.log(checkTypeOf(1))
-// console.log(checkIfWord('Incomprehensibilities'))
-// console.log(checkIfProfane('s#1t'))
-// console.log(checkIfTooLong('Incomprehensibilities'))
-
 module.exports = {
     checkTypeOf: checkTypeOf,
     checkIfWord: checkIfWord,
