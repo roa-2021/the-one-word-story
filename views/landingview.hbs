@@ -1,11 +1,18 @@
-  {{> header }}
-  <div class="master-container">
-<div class="title">The one word story</div>
-<div class="explaination">This is the explaination!</div>
-<div class="story">{{story}}</div>
-<form action="/" method="post" class="input">
-  <input id="input" type="text">
-  <button id="submit" name="submit" type="submit">Submit</button>
-</form>
-  </div> 
-  {{> footer }}
+{{> header}}
+<div class="master-container">
+  <div class="title">The one word story</div>
+  <div class="explaination">Welcome to The One Word Story!! Read through the last words of the story below and input one word to progress the story.<br><br> <u></u>Your word must:
+    <ul>
+      <li>English words only.</li>
+      <li>No dirty words.</li>
+      <li>No numbers or symbols</li>
+      <li>Have fun!!</li>
+    </ul>
+    </div>
+  <div class="story">{{story}}</div>
+  <form action="/" method="post" class="input">
+    <input id="input" type="text" name="story">
+    <button id="submit" name="" type="submit">Submit</button>
+  </form>
+</div> 
+{{> footer}}
