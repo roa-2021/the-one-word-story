@@ -30,14 +30,15 @@ server.get('/story', (request, response) => {
 // /////////*********//post route/////************** */ (takes input from home page and displays on story page)
 server.post('/', (request, response) => {
   const input = request.body 
-  fs.readFile('/story.json', 'utf-8', (err, data) => {
-     if (err) return err.message
+  console.log(request.body.story)
+  fs.readFile('./story.json', 'utf-8', (err, data) => {
+     if (err) return response.status(500).send(err.message)
      
     // const parsedData = JSON.parse(data)
-   // const newWord = JSON.stringify({ }, null, 2)
+   const newWord = JSON.stringify(input, null, 2)
 
-    fs.append('/story.json', input, 'utf-8', (err) => {
-      if (err) return err.message
+    fs.appendFile('./story.json', newWord, 'utf-8', (err) => {
+      if (err) return response.status(500).send(err.message)
         response.redirect('/story')
   
     })
