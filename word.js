@@ -1,48 +1,31 @@
+const checkWord = require('check-word')
+const Profanity = require('profanity-js')
+const words = checkWord('en')
+
+const profanity = new Profanity({test: 'fuck'}, {language: 'en-us'});
+
+
 const checkTypeOf = (input) => {
 
     return typeof input
 }
 
-const checkIfNum = (input) => {
+const checkIfWord = (input) => {
+    return words.check(input)
+}
 
-    return !isNaN(parseInt(input))
+const checkIfProfane = (input) => {
+
+    return profanity.isProfrane(input)
 
 }
 
-const checkIfAlpha = (input) => {
-
-    if(/^[a-zA-Z]+$/.test(input))
-    {
-        return true;
-    }
-    else{
-        return false;
-    }
-
-}
-
-const checkIfExplicit = (input) => {
-
-    const explicitWords = ['fuck', 'shit', 'ass']
-
-    const ifExplicit = false
-
-    for(i = 0; 0 < explicitWords.length; i++)
-    {
-        if(input == explicitWords[i])
-        {
-            ifExplicit = true
-        }
-    }
-
-    return ifExplicit;
-
-}
-
+console.log(checkTypeOf(1))
+console.log(checkIfWord('hsfd'))
+console.log('s#1t')
 
 module.exports = {
     checkTypeOf: checkTypeOf,
-    checkIfNum: checkIfNum,
-    checkIfAlpha: checkIfAlpha,
-    checkIfExplicit: checkIfExplicit
+    checkIfWord: checkIfWord,
+    checkIfProfane: checkIfProfane
 }
