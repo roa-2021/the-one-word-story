@@ -1,0 +1,20 @@
+{{> header}}
+<div class="master-container">
+  <div class="title">The one word story</div>
+  <div class="explaination">Welcome to The One Word Story!! Read through the last words of the story below and input one word to progress the story.<br><br>Your word must:
+    <ul>
+      <li>English words only.</li>
+      <li>No dirty words.</li>
+      <li>No numbers or symbols</li>
+      <li>Have fun!!</li>
+    </ul>
+    </div>
+  <div class="story">
+    <p>{{story}}</p>
+    </div>
+  <form action="/" method="post" class="input-container">
+    <input id="input" type="text" name="story" placeholder="Invalid word, please try again">
+    <button id="submit" name="" type="submit">Submit</button>
+  </form>
+</div> 
+{{> footer}}
