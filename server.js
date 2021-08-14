@@ -1,6 +1,5 @@
 const express = require('express')
 const hbs = require('express-handlebars')
-const alert = require('alert')
 const fs = require('fs')
 
 const word = require('./word')
@@ -58,7 +57,18 @@ server.post('/', (req, res) => {
 
   // word validation
   if (word.isInvalid(usersWord)) {
-    return alert(`Sorry! "${usersWord}" is not a valid word. Please try again`)
+    console.log("INVALID WORD SUBMITTED!!")
+    fs.readFile('./story.json', 'utf-8', (err, data) => {
+      if (err) return res.status(500).send(err.message)
+  
+      const parsedData = JSON.parse(data)
+      const wordsArray = parsedData.story
+      const preview = getLastWords(wordsArray, 10)
+      const storyObj = {story:preview.join(' ')}
+  
+      res.render('landingviewerror', storyObj)
+    })
+    return
   } 
   
   fs.readFile('./story.json', 'utf-8', (err, data) => {
@@ -71,7 +81,7 @@ server.post('/', (req, res) => {
 
     fs.writeFile('./story.json', newStory, 'utf-8', (err, data) => {
       if (err) return res.status(500).send(err.message)
-      res.redirect('/')
+      res.redirect('/story')
     })
   })
 })
