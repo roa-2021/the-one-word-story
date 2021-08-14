@@ -4,21 +4,11 @@ const words = checkWord('en')
 
 const profanity = new Profanity({test: ''}, {language: 'en-us'});
 
-// input cannot be > 26
-const isTooLong = input => {
-    return input.length >= 26 ? true : false
-}
-
-// input must be string type
-const isNotString = input => {
-    return typeof input !== "string" ? true : false
-}
-
 // if word is invalid return TRUE
 const isInvalid = input => {
-    if (isTooLong(input)) {
+    if (typeof input !== "string") {
         return true
-    } else if (isNotString(input)) {
+    } else if (input.length >= 26) {
         return true
     } else if (words.check(input) === false) {
         return true
