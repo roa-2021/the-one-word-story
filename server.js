@@ -88,7 +88,7 @@ server.post('/', (req, res) => {
 
 // about us route
 server.get('/about-us', (req, res) => {
-  res.sendFile('aboutview')
+  res.render('aboutview')
 })
 
 module.exports = server
