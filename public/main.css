@@ -6,11 +6,11 @@
 }
 
 html,body {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Helvetica, sans-serif, Arial;
   color: #333;
   width: 100%;
   min-height: 100%;
-  background-color: blanchedalmond;
+  background-color: #e3e3e3;
   background-size: cover;
 }
 
@@ -32,92 +32,117 @@ a
   margin-left: 30px;
 }
 
-.home {
+header {
   margin: 10px;
-}
-
-.title
-{
-  margin-top: 50px;
-  font-family: 'Indie Flower', cursive;
-  font-size: 4rem;
-  text-align: center;
-}
-
-.explaination
-{
-  margin: 0 auto;
-  width: 70vw;
-  max-width: 600px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-.explaination li {
-  list-style-type: disc;
-}
-
-.input-container {
-  margin: 30px;
-  display: flex;
-  justify-content: center;
-}
-
-#input
-{
-  font-size: 1.5rem;
-  width: 300px;
-  height: 30px;
-}
-
-.story
-{
-  font-family: 'Indie Flower', cursive;
-  color: #333;
-  font-size: 2.5rem;
-
-  margin: 0 auto;
-  height: 200px;
+  margin-top: 20px;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+.nav {
+  margin-left: auto;
+  margin-right: 20px;
+}
+.title {
+  margin-left: 20px;
+  font-family: Georgia, serif;
+  font-size: 2rem;
+}
+
+.explaination {
+  margin: 80px auto 30px;
+  font-size: 1.25rem;
+
+  width: 70vw;
+  max-width: 600px;
+
+  text-align: center;
 }
 
 .story {
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  
+  margin: 0 auto;
+  height: 150px;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
-button
-{
-  width: 80px;
-  height: 35px;
-  float: right;
-  margin-left: 20px;
-  background-color: #5a5a5a;
-  color:#fff;
-  border-radius: 30px;
+.whole-story-intro {
+  font-family: Georgia, serif;
+  margin: 50px auto 0;
+}
+.whole-story {
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 35px;
+  margin: 50px auto 0;
+  width: 70vw;
+  max-width: 700px;
 }
 
-button:hover
-{
-  background-color: #003C9d;
-  border-radius: 10px;
-  cursor: pointer;
+form {
+  display: flex;
+  align-items: center;
+}
+#input {
+  font-size: 1.25rem;
+  width: 400px;
+  height: 30px;
+  padding-left: 5px;
+}
+button {
+  margin: 20px;
+  width: 60px;
+  height: 30px;
+
+  color: #333;
 }
 
-.footer
-{
-  margin:0 auto;
+.about-us-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center;
+  font-size: 1.25rem;
+  margin: 30px auto;
+}
+.names-list {
+  margin: 50px auto;
+  text-align: center;
+  display: flex;
+}
+.card {
+  border: 2px solid #333;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.card img {
+  width: 150px;
+  border-radius: 50%;
+}
+.card a {
+  text-align: center;
+}
+
+.footer {
+  margin:auto;
   position: absolute;
+  bottom: 10px;
+
   width: 100%;
   height: 20px;
   text-align: center;
-  bottom: 0;
 }
 
-.wholestory
-{
-  margin: 0 auto;
-  width: 90%;
-  height: 100%;
-}
