@@ -1,102 +1,94 @@
 const express = require('express')
-const fs = require('fs')
-const server = express()
 const hbs = require('express-handlebars')
-const alert = require('alert')
+const fs = require('fs')
 
-const wordFilter = require('./word')
-const { checkIfProfane } = require('./word')
-const { json } = require('express')
+const word = require('./word')
 
-// Server configuration
+// Server config
+const server = express()
 server.use(express.static('public'))
 server.use(express.urlencoded({ extended: false }))
 
-// Handlebars configuration
+// Handlebars config
 server.engine('hbs', hbs({ extname: 'hbs' }))
 server.set('view engine', 'hbs')
 
+let getLastWords = (story, amount) => {
+  const arrayLength = story.length
+  const indexPosition = arrayLength - amount
+  let tempArray = []
 
-///////////////////////// Routes///////////////////////
+  for (i=indexPosition; i< arrayLength; i++) {
+    tempArray.push(story[i])
+  }
+  return tempArray
+}
 
-//home route
-server.get('/', (request, response) => {
-  response.render('landingview')
+// root route
+server.get('/', (req, res) => {
+  fs.readFile('./story.json', 'utf-8', (err, data) => {
+    if (err) return res.status(500).send(err.message)
+
+    const parsedData = JSON.parse(data)
+    const wordsArray = parsedData.story
+    const preview = getLastWords(wordsArray, 10)
+    const storyObj = {story:preview.join(' ')}
+
+    res.render('landingview', storyObj)
+  })
  })
 
- ////////*********//story route/////************** */
-server.get('/story', (request, response) => {
-  fs.readFile('/story.json', 'utf-8', (err, data) => {
- 
-    response.render('storyview', data)
- })
+// story route
+server.get('/story', (req, res) => {
+  fs.readFile('./story.json', 'utf-8', (err, data) => {
+    if (err) return res.status(500).send(err.message)
+
+    const parsedData = JSON.parse(data)
+    const wordsArray = parsedData.story
+    const storyObj = {story:wordsArray.join(' ')}
+
+    res.render('storyview', storyObj)
+  })
 })
 
-// /////////*********//post route/////************** */ (takes input from home page and displays on story page)
-server.post('/', (request, response) => {
+// post route
+server.post('/', (req, res) => {
+  const usersWord = req.body.story
 
-  const input = request.body.story
+  // word validation
+  if (word.isInvalid(usersWord)) {
+    console.log("INVALID WORD SUBMITTED!!")
+    fs.readFile('./story.json', 'utf-8', (err, data) => {
+      if (err) return res.status(500).send(err.message)
   
-  if (wordFilter.checkTypeOf(input) != 'string')
-  {
-    alert('Not a string! You sneaky devil.')
-    return;
-  }
-  else if (wordFilter.checkIfWord(input) === false)
-  {
-    
-    alert('That\'s not a word! Please try again!')
-    return;
-  }
-  else if (wordFilter.checkIfProfane(input) === true)
-  {
-    alert('Watch your language! No profanity.')
-    return;
-  }
-  else if (wordFilter.checkIfTooLong(input) === true)
-  {
-    alert('Way too long! Please shorten your word')
-    return;
-  }
+      const parsedData = JSON.parse(data)
+      const wordsArray = parsedData.story
+      const preview = getLastWords(wordsArray, 10)
+      const storyObj = {story:preview.join(' ')}
+  
+      res.render('landingviewerror', storyObj)
+    })
+    return
+  } 
   
   fs.readFile('./story.json', 'utf-8', (err, data) => {
-    if (err) return response.status(500).send(err.message)
-     
+    if (err) return res.status(500).send(err.message)
+
     const parsedData = JSON.parse(data)
+    const wordsArray = parsedData.story
+    wordsArray.push(usersWord)
+    const newStory = JSON.stringify({story : wordsArray}, null, 2)
 
-    
-   const newArray = parsedData.story.push(input)
-    
-   const newStory = JSON.stringify({story:newArray}, null, 2)
-
-   fs.writeFile('./story.json', newStory, 'utf-8', (err, data) => {
-    if (err) return response.status(500).send(err.message)
-     
-        response.redirect('/story')
-  
+    fs.writeFile('./story.json', newStory, 'utf-8', (err, data) => {
+      if (err) return res.status(500).send(err.message)
+      res.redirect('/story')
     })
- })
+  })
 })
 
-
-
-//about us route
-server.get('/about-us', (request, response) => {
-  response.sendFile(__dirname + 'aboutus.html')
- 
+// about us route
+server.get('/about-us', (req, res) => {
+  res.render('aboutview')
 })
-
-
-
-//fucntions
-
-// function getLastWords(story) {
-//   //splits story string into an array of words
-//   var storyArray = story.split(" ");
-
-//   console.log(storyArray[storyArray.length - 1])
-// }
-
-// getLastWords('/story.json')
 
 module.exports = server

@@ -4,35 +4,20 @@ const words = checkWord('en')
 
 const profanity = new Profanity({test: ''}, {language: 'en-us'});
 
-
-const checkTypeOf = (input) => {
-
-    return typeof input
-}
-
-const checkIfWord = (input) => {
-    return words.check(input)
-}
-
-const checkIfProfane = (input) => {
-
-    return profanity.isProfane(input)
-
-}
-
-const checkIfTooLong = (input) => {
-
-    if(input.length >= 26)
-    {
-        return true;
+// if word is invalid return TRUE
+const isInvalid = input => {
+    if (typeof input !== "string") {
+        return true
+    } else if (input.length >= 26) {
+        return true
+    } else if (words.check(input) === false) {
+        return true
+    } else if (profanity.isProfane(input)) {
+        return true
     }
-    return false;
-
+    return false
 }
 
 module.exports = {
-    checkTypeOf: checkTypeOf,
-    checkIfWord: checkIfWord,
-    checkIfProfane: checkIfProfane,
-    checkIfTooLong: checkIfTooLong
+    isInvalid,
 }
