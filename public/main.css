@@ -65,7 +65,7 @@ a
 #input
 {
   font-size: 1.5rem;
-  width: 300px;
+  width: 200px;
   height: 30px;
 }
 
@@ -76,7 +76,7 @@ a
   font-size: 2.5rem;
 
   margin: 0 auto;
-  height: 200px;
+  height: 50px;
 
   display: flex;
   align-items: center;
