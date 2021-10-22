@@ -17,6 +17,9 @@
   "bugs": {
     "url": "https://github.com/roa-2021/the-one-word-story/issues"
   },
+  "engines": {
+    "node": "15.x"
+  },
   "homepage": "https://github.com/roa-2021/the-one-word-story#readme",
   "dependencies": {
     "check-word": "^1.1.0",
